@@ -9,18 +9,20 @@
 <%= favicon %>
 
 <% if Backlogs.setting[:show_redmine_std_header] %>
-<%= stylesheet_link_tag 'application', :media => 'all' %>
 <%= stylesheet_link_tag 'rtl', :media => 'all' if l(:direction) == 'rtl' %>
 <% end %>
 
 <%= call_hook :view_layouts_base_html_head %>
 
+<%= javascript_include_tag "jquery/jquery.ui.touch-punch.min.js", :plugin => "redmine_backlogs" %>
 <%= stylesheet_link_tag 'global.css', 'jquery/jquery-ui.css', :plugin => 'redmine_backlogs', :media => 'print,screen' %>
 <%= stylesheet_link_tag 'global_print.css', :plugin => 'redmine_backlogs', :media => 'print' %>
 
 <%= yield :head_tags -%>
+<%= heads_for_theme %>
 
 <% if Backlogs.setting[:show_redmine_std_header] %>
+<%= stylesheet_link_tag 'application', :media => 'all' %>
 <script type="text/javascript">
 RB.$(function(){
 
